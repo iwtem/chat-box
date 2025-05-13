@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
     "prepare": "husky"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier --write"
+      "prettier --write",
+      "next lint --fix"
     ],
     "*.md": "prettier --write"
   },

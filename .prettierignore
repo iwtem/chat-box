@@ -1,13 +1,13 @@
 # dependencies
 node_modules
 package-lock.json
+bun.lock
 
 # production
 dist
 
 # editor
 .idea
-.vscode
 .editorconfig
 .DS_Store
 
