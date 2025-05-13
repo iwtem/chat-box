@@ -1,0 +1,9 @@
+{
+  "prettier.printWidth": 100,
+  "tailwindCSS.classFunctions": [
+    "tw",
+    "clsx",
+    "cva"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+}
