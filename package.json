@@ -1,5 +1,6 @@
 {
   "name": "chat-box",
+  "description": "This is a chat box that uses AI to answer questions",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,7 +16,7 @@
       "prettier --write"
     ],
     "*.{ts,tsx}": [
-      "next lint --fix"
+      "eslint --fix"
     ]
   },
   "dependencies": {

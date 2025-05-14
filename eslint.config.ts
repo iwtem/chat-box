@@ -12,7 +12,7 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 const eslintConfig = defineConfig([
   ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
   eslintPluginPrettierRecommended,
-  globalIgnores(['.next', 'node_modules', 'eslint.config.ts']),
+  globalIgnores(['.next', 'node_modules']),
 ]);
 
 export default eslintConfig;
