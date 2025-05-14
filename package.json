@@ -11,11 +11,12 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "next lint --fix"
+    "*.{ts,tsx,md}": [
+      "prettier --write"
     ],
-    "*.md": "prettier --write"
+    "*.{ts,tsx}": [
+      "next lint --fix"
+    ]
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.2",

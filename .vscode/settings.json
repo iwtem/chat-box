@@ -1,12 +1,13 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.printWidth": 100,
-  "tailwindCSS.classFunctions": [
-    "tw",
-    "clsx",
-    "cva"
-  ],
+  "files.associations": { "*.css": "tailwindcss" },
+  "tailwindCSS.classFunctions": ["tw", "clsx", "cva"],
+  "terminal.integrated.scrollback": 5000,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "files.associations": {
-    "*.css": "tailwindcss"
-  }
+  "[astro]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }
