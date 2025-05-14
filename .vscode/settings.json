@@ -1,4 +1,6 @@
 {
+  "cSpell.language": "zh,en",
+  "cSpell.words": ["nextjs", "VSCode", "JavaScript", "React"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.printWidth": 100,
   "files.associations": { "*.css": "tailwindcss" },
