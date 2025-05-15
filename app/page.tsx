@@ -6,7 +6,7 @@ import { Button } from '~/components/ui/button';
 export default function Home() {
   return (
     <main className="flex h-full flex-col">
-      <div className="relative m-auto flex w-full max-w-200 flex-col gap-6">
+      <div className="relative m-auto flex w-full max-w-200 flex-col gap-6 p-6 md:p-12">
         <div className="mx-auto flex items-center gap-4">
           <Image
             className="dark:invert"
@@ -31,15 +31,15 @@ export default function Home() {
             <div className="flex gap-2">
               <Button variant="outline" className="rounded-full">
                 <Atom />
-                深度思考
+                <span className="hidden md:inline">深度思考</span>
               </Button>
               <Button variant="outline" className="rounded-full">
                 <Globe />
-                联网搜索
+                <span className="hidden md:inline">联网搜索</span>
               </Button>
             </div>
-            <div>
-              <Button variant="ghost" size="icon" className="rounded-full">
+            <div className="flex gap-2">
+              <Button variant="outline" size="icon" className="rounded-full">
                 <Paperclip />
               </Button>
               <Button variant="outline" size="icon" className="rounded-full">
