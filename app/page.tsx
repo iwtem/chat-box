@@ -1,7 +1,6 @@
-import { Atom, Globe, Paperclip, Send } from 'lucide-react';
 import Image from 'next/image';
 
-import { Button } from '~/components/ui/button';
+import ChatInput from '~/components/chat/chat-input';
 
 export default function Home() {
   return (
@@ -21,33 +20,7 @@ export default function Home() {
 
         <p className="mx-auto text-center text-gray-500">How can I help you today?</p>
 
-        <div className="flex w-full flex-col gap-2 rounded-3xl border border-gray-100 bg-gray-50 p-4">
-          <textarea
-            rows={2}
-            placeholder="Ask me anything..."
-            className="resize-none placeholder:text-gray-300 focus:outline-none"
-          />
-          <div className="flex justify-between gap-4">
-            <div className="flex gap-2">
-              <Button variant="outline" className="rounded-full">
-                <Atom />
-                <span className="hidden md:inline">深度思考</span>
-              </Button>
-              <Button variant="outline" className="rounded-full">
-                <Globe />
-                <span className="hidden md:inline">联网搜索</span>
-              </Button>
-            </div>
-            <div className="flex gap-2">
-              <Button variant="outline" size="icon" className="rounded-full">
-                <Paperclip />
-              </Button>
-              <Button variant="outline" size="icon" className="rounded-full">
-                <Send />
-              </Button>
-            </div>
-          </div>
-        </div>
+        <ChatInput />
       </div>
 
       <div className="fixed bottom-0 w-full p-2 text-center text-xs text-gray-400">

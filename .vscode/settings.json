@@ -1,6 +1,15 @@
 {
   "cSpell.language": "zh,en",
-  "cSpell.words": ["nextjs", "VSCode", "JavaScript", "React", "turbopack", "oklch"],
+  "cSpell.words": [
+    "JavaScript",
+    "nextjs",
+    "oklch",
+    "ollama",
+    "qwen",
+    "React",
+    "turbopack",
+    "VSCode"
+  ],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" },
