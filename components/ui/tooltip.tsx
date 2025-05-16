@@ -58,7 +58,7 @@ interface TooltipProps extends Omit<TooltipPrimitive.TooltipContentProps, 'conte
 const Tooltip = ({ children, content, ...props }: TooltipProps) => {
   return (
     <TooltipRoot>
-      <TooltipTrigger>{children}</TooltipTrigger>
+      <TooltipTrigger asChild>{children}</TooltipTrigger>
       <TooltipContent {...props}>{content}</TooltipContent>
     </TooltipRoot>
   );
