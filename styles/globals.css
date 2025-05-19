@@ -122,6 +122,19 @@
     text-size-adjust: 100%;
   }
 
+  pre {
+    white-space: pre-wrap;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: theme(--color-gray-400);
+  }
+
   :where(html, body) {
     height: 100%;
   }
