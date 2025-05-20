@@ -12,7 +12,7 @@ interface MessagesProps {
 
 const Messages = ({ messages, className }: MessagesProps) => {
   return (
-    <div className={cn('flex flex-col gap-4', className)}>
+    <div className={cn('flex w-full flex-col gap-4 py-6', className)}>
       {messages.map(({ id, content, role }) => (
         <article key={id}>
           {role === 'user' ? (

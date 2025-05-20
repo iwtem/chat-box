@@ -9,25 +9,25 @@ import { cn } from '~/lib/utils';
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const hasMessages = messages.length > 0;
 
   return (
-    <main className="flex h-full flex-col">
-      <div
-        className={cn(
-          'mx-auto flex h-full w-full max-w-200 flex-col items-center gap-6 p-4 md:p-12',
-          messages.length > 0 ? 'justify-between' : 'justify-center',
-        )}
-      >
-        {messages.length > 0 ? <Messages messages={messages} /> : <Hero />}
+    <main className="flex h-full">
+      <div className="mx-auto flex w-full max-w-200 flex-col justify-center gap-6 px-4 md:px-12">
+        {hasMessages ? <Messages messages={messages} className="flex-1" /> : <Hero />}
 
-        <MessageInput
-          input={input}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-        />
-
-        <div className="fixed bottom-0 w-full p-2 text-center text-xs text-gray-400">
-          AI-generated, for reference only
+        <div className="sticky bottom-0 w-full flex-none bg-white">
+          <MessageInput
+            input={input}
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+            className={cn(hasMessages ? 'shadow-md' : '')}
+          />
+          {hasMessages && (
+            <div className="py-2 text-center text-xs text-gray-400">
+              AI-generated, for reference only
+            </div>
+          )}
         </div>
       </div>
     </main>

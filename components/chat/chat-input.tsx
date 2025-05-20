@@ -1,33 +1,33 @@
 'use client';
 
+import { useChat } from '@ai-sdk/react';
 import { Atom, Globe, Paperclip, Send } from 'lucide-react';
-import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 
 import { Button } from '~/components/ui/button';
 import { Tooltip } from '~/components/ui/tooltip';
 
-import { cn } from '~/lib/utils';
 import SwitchButton from './switch-button';
 
-interface MessageInputProps {
-  input: string;
-  handleInputChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  className?: string;
-}
-
-const MessageInput = ({ input, handleInputChange, handleSubmit, className }: MessageInputProps) => {
+const ChatInput = () => {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
   const [searchEnabled, setSearchEnabled] = useState(false);
   const [thinkingEnabled, setThinkingEnabled] = useState(false);
 
   return (
-    <div
-      className={cn(
-        'flex w-full flex-col gap-2 rounded-3xl border border-gray-100 bg-gray-50 p-4',
-        className,
-      )}
-    >
+    <div className="flex w-full flex-col gap-2 rounded-3xl border border-gray-100 bg-gray-50 p-4">
+      {messages.map((message) => (
+        <div key={message.id} className="whitespace-pre-wrap">
+          {message.role === 'user' ? 'User: ' : 'AI: '}
+          {message.parts.map((part, i) => {
+            switch (part.type) {
+              case 'text':
+                return <div key={`${message.id}-${i}`}>{part.text}</div>;
+            }
+          })}
+        </div>
+      ))}
+
       <form onSubmit={handleSubmit}>
         <textarea
           rows={2}
@@ -97,4 +97,4 @@ const MessageInput = ({ input, handleInputChange, handleSubmit, className }: Mes
   );
 };
 
-export default MessageInput;
+export default ChatInput;
