@@ -12,6 +12,7 @@
     "turbopack",
     "VSCode"
   ],
+  "editor.rulers": [100],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" },
