@@ -10,7 +10,8 @@
     "qwen",
     "React",
     "turbopack",
-    "VSCode"
+    "VSCode",
+    "katex"
   ],
   "editor.rulers": [100],
   "editor.formatOnSave": true,
