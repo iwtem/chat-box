@@ -254,7 +254,7 @@
   overflow: hidden;
   background: transparent;
   border-bottom: 1px solid var(--borderColor-muted);
-  height: 0.25em;
+  height: 1px;
   padding: 0;
   margin: var(--base-size-24) 0;
   background-color: var(--borderColor-default);
@@ -898,8 +898,6 @@
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  color: var(--fgColor-default);
-  background-color: var(--bgColor-muted);
   border-radius: 6px;
 }
 

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import ReactMarkdown from 'react-markdown';
 import RehypeHighlight from 'rehype-highlight';
 import RehypeKatex from 'rehype-katex';
 import RemarkBreaks from 'remark-breaks';
@@ -11,7 +12,7 @@ import '~/styles/markdown.css';
 
 import { cn, escapeBrackets, tryWrapHtmlCode } from '~/lib/utils';
 
-import MemoizedMarkdown from './memoized-markdown';
+import PreCode from './pre-code';
 
 interface MarkdownProps {
   children: string;
@@ -23,12 +24,13 @@ const Markdown = ({ className, children }: MarkdownProps) => {
 
   return (
     <div dir="auto" className={cn('markdown-body', className)}>
-      <MemoizedMarkdown
+      <ReactMarkdown
         remarkPlugins={[RemarkMath, RemarkGfm, RemarkBreaks]}
         rehypePlugins={[RehypeKatex, [RehypeHighlight, { detect: false, ignoreMissing: true }]]}
+        components={{ pre: PreCode }}
       >
         {escapedContent}
-      </MemoizedMarkdown>
+      </ReactMarkdown>
     </div>
   );
 };
