@@ -1,16 +1,27 @@
-import { Check, Copy } from 'lucide-react';
+import { Check, ChevronsDownUp, ChevronsUpDown, Copy } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
-import { Button } from '~/components/ui/button';
 import { copyToClipboard } from '~/lib/clipboard';
 
+import { cn } from '~/lib/utils';
 import Mermaid from './mermaid';
 
 const PreCode = ({ children }: { children?: React.ReactNode }) => {
   const [mermaidCode, setMermaidCode] = useState('');
   const [isCopied, setIsCopied] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
+  const [showToggle, setShowToggle] = useState(false);
+
   const preRef = useRef<HTMLPreElement>(null);
+
+  useEffect(() => {
+    if (preRef.current) {
+      const codeHeight = preRef.current.scrollHeight;
+      setShowToggle(codeHeight > 400);
+      preRef.current.scrollTop = preRef.current.scrollHeight;
+    }
+  }, [children]);
 
   useEffect(() => {
     if (preRef.current) {
@@ -48,14 +59,26 @@ const PreCode = ({ children }: { children?: React.ReactNode }) => {
 
   return (
     <>
-      <pre ref={preRef} className="relative">
-        <Button
-          size="icon"
-          onClick={isCopied ? undefined : handleCopyCode}
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-300"
-        >
-          {isCopied ? <Check size={12} className="text-green-500" /> : <Copy size={12} />}
-        </Button>
+      <pre ref={preRef} className={cn('relative', collapsed && 'max-h-100')}>
+        <div className="sticky top-0 flex items-center justify-between bg-[#1a1b26] py-3 text-gray-500">
+          <span className="text-sm">JavaScript</span>
+          <div className="flex items-center gap-3">
+            {showToggle && (
+              <button
+                onClick={() => setCollapsed(!collapsed)}
+                className="transition-colors hover:text-gray-300"
+              >
+                {collapsed ? <ChevronsUpDown size={16} /> : <ChevronsDownUp size={16} />}
+              </button>
+            )}
+            <button
+              onClick={isCopied ? undefined : handleCopyCode}
+              className="transition-colors hover:text-gray-300"
+            >
+              {isCopied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+            </button>
+          </div>
+        </div>
         {children}
       </pre>
       {mermaidCode.length > 0 && <Mermaid code={mermaidCode} />}
