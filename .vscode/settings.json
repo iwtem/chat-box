@@ -3,15 +3,16 @@
   "cSpell.words": [
     "deepseek",
     "JavaScript",
+    "katex",
     "lmstudio",
     "nextjs",
     "oklch",
     "ollama",
     "qwen",
     "React",
+    "sonner",
     "turbopack",
-    "VSCode",
-    "katex"
+    "VSCode"
   ],
   "editor.rulers": [100],
   "editor.formatOnSave": true,
