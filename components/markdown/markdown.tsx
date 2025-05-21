@@ -12,6 +12,7 @@ import '~/styles/markdown.css';
 
 import { cn, escapeBrackets, tryWrapHtmlCode } from '~/lib/utils';
 
+import Anchor from './anchor';
 import PreCode from './pre-code';
 
 interface MarkdownProps {
@@ -27,7 +28,7 @@ const Markdown = ({ className, children }: MarkdownProps) => {
       <ReactMarkdown
         remarkPlugins={[RemarkMath, RemarkGfm, RemarkBreaks]}
         rehypePlugins={[RehypeKatex, [RehypeHighlight, { detect: false, ignoreMissing: true }]]}
-        components={{ pre: PreCode }}
+        components={{ pre: PreCode, a: Anchor }}
       >
         {escapedContent}
       </ReactMarkdown>

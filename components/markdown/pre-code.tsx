@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 import { copyToClipboard } from '~/lib/clipboard';
-
 import { cn } from '~/lib/utils';
 import Mermaid from './mermaid';
 
@@ -12,6 +11,7 @@ const PreCode = ({ children }: { children?: React.ReactNode }) => {
   const [isCopied, setIsCopied] = useState(false);
   const [collapsed, setCollapsed] = useState(true);
   const [showToggle, setShowToggle] = useState(false);
+  const [language, setLanguage] = useState('plaintext');
 
   const preRef = useRef<HTMLPreElement>(null);
 
@@ -34,6 +34,7 @@ const PreCode = ({ children }: { children?: React.ReactNode }) => {
         if (wrapLanguages.includes(name)) {
           codeElement.style.whiteSpace = 'pre-wrap';
         }
+        setLanguage(name);
       });
 
       const mermaidDom = preRef.current.querySelector('code.language-mermaid');
@@ -61,7 +62,7 @@ const PreCode = ({ children }: { children?: React.ReactNode }) => {
     <>
       <pre ref={preRef} className={cn('relative', collapsed && 'max-h-100')}>
         <div className="sticky top-0 flex items-center justify-between bg-[#1a1b26] py-3 text-gray-500">
-          <span className="text-sm">JavaScript</span>
+          <span className="text-sm">{language}</span>
           <div className="flex items-center gap-3">
             {showToggle && (
               <button
