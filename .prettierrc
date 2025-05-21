@@ -7,7 +7,7 @@
   "objectWrap": "collapse",
   "trailingComma": "all",
   "bracketSpacing": true,
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "plugins": [
     "prettier-plugin-organize-imports",
     "prettier-plugin-packagejson",
