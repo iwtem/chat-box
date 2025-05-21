@@ -1,8 +1,8 @@
 'use client';
 
 import { Atom, Globe, Paperclip, Send } from 'lucide-react';
-import type { ChangeEvent, FormEvent } from 'react';
-import { useState } from 'react';
+import type { ChangeEvent, FormEvent, KeyboardEvent } from 'react';
+import { useRef, useState } from 'react';
 
 import { Button } from '~/components/ui/button';
 import { Tooltip } from '~/components/ui/tooltip';
@@ -20,6 +20,30 @@ interface MessageInputProps {
 const MessageInput = ({ input, handleInputChange, handleSubmit, className }: MessageInputProps) => {
   const [searchEnabled, setSearchEnabled] = useState(false);
   const [thinkingEnabled, setThinkingEnabled] = useState(false);
+  const isComposing = useRef(false);
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    // 避免 Safari 浏览器中，中文输入法可能会出发提交事件
+    if (e.keyCode === 229) {
+      return;
+    }
+
+    // 避免非 Enter 键触发提交事件
+    if (e.key !== 'Enter') {
+      return;
+    }
+
+    // 避免中文输入法可能会出发提交事件
+    if (e.key === 'Enter' && (e.nativeEvent.isComposing || isComposing.current)) {
+      return;
+    }
+
+    // 仅在按下 Enter 键且没有按下 Alt、Ctrl、Shift 键时，触发提交事件
+    if (e.key === 'Enter' && !e.altKey && !e.ctrlKey && !e.shiftKey) {
+      const button = document.querySelector<HTMLButtonElement>('button[type="submit"]');
+      button?.click();
+    }
+  };
 
   return (
     <div
@@ -32,7 +56,11 @@ const MessageInput = ({ input, handleInputChange, handleSubmit, className }: Mes
         <textarea
           rows={2}
           value={input}
+          autoFocus
           onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          onCompositionStart={() => (isComposing.current = true)}
+          onCompositionEnd={() => (isComposing.current = false)}
           placeholder="Ask me anything..."
           className="w-full resize-none placeholder:text-gray-300 focus:outline-none"
         />

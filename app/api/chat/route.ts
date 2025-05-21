@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   //const model = ollama('qwen3:30b-a3b');
-  const model = lmstudio('qwen3-8b');
+  const model = lmstudio('qwen3-1.7b');
 
   const response = streamText({ model, messages });
 
