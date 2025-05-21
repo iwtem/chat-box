@@ -58,32 +58,33 @@ const PreCode = ({ children }: { children?: React.ReactNode }) => {
     }
   };
 
+  if (mermaidCode.length > 0) {
+    return <Mermaid code={mermaidCode} />;
+  }
+
   return (
-    <>
-      <pre ref={preRef} className={cn('relative', collapsed && 'max-h-100')}>
-        <div className="sticky top-0 flex items-center justify-between bg-[#1a1b26] py-3 text-gray-500">
-          <span className="text-sm">{language}</span>
-          <div className="flex items-center gap-3">
-            {showToggle && (
-              <button
-                onClick={() => setCollapsed(!collapsed)}
-                className="transition-colors hover:text-gray-300"
-              >
-                {collapsed ? <ChevronsUpDown size={16} /> : <ChevronsDownUp size={16} />}
-              </button>
-            )}
+    <pre ref={preRef} className={cn('relative', collapsed && 'max-h-100')}>
+      <div className="sticky top-0 flex items-center justify-between bg-[#1a1b26] py-3 text-gray-500">
+        <span className="text-sm">{language}</span>
+        <div className="flex items-center gap-3">
+          {showToggle && (
             <button
-              onClick={isCopied ? undefined : handleCopyCode}
+              onClick={() => setCollapsed(!collapsed)}
               className="transition-colors hover:text-gray-300"
             >
-              {isCopied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+              {collapsed ? <ChevronsUpDown size={16} /> : <ChevronsDownUp size={16} />}
             </button>
-          </div>
+          )}
+          <button
+            onClick={isCopied ? undefined : handleCopyCode}
+            className="transition-colors hover:text-gray-300"
+          >
+            {isCopied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+          </button>
         </div>
-        {children}
-      </pre>
-      {mermaidCode.length > 0 && <Mermaid code={mermaidCode} />}
-    </>
+      </div>
+      {children}
+    </pre>
   );
 };
 
