@@ -1,4 +1,5 @@
-import DeepSeek from '../icons/deepseek';
+import DeepSeek from '~/components/icons/deepseek';
+import Markdown from '~/components/markdown/markdown';
 
 interface AssistantMessageProps {
   content: string;
@@ -10,7 +11,7 @@ const AssistantMessage = ({ content }: AssistantMessageProps) => {
       <span className="-mt-0.5 rounded-full border bg-white p-0.5">
         <DeepSeek className="size-7" />
       </span>
-      <div>{content}</div>
+      <Markdown className="min-w-0">{content}</Markdown>
     </div>
   );
 };
