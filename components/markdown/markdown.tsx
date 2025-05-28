@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import RehypeHighlight from 'rehype-highlight';
 import RehypeKatex from 'rehype-katex';
 import RemarkBreaks from 'remark-breaks';
+import RemarkGemoji from 'remark-gemoji';
 import RemarkGfm from 'remark-gfm';
 import RemarkMath from 'remark-math';
 
@@ -26,7 +27,7 @@ const Markdown = ({ className, children }: MarkdownProps) => {
   return (
     <div dir="auto" className={cn('markdown-body', className)}>
       <ReactMarkdown
-        remarkPlugins={[RemarkMath, RemarkGfm, RemarkBreaks]}
+        remarkPlugins={[RemarkMath, RemarkGfm, RemarkBreaks, RemarkGemoji]}
         rehypePlugins={[RehypeKatex, [RehypeHighlight, { detect: false, ignoreMissing: true }]]}
         components={{ pre: PreCode, a: Anchor }}
       >
